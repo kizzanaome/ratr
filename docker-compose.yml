@@ -1,0 +1,21 @@
+version: '3'
+services:
+  users:
+    build:
+      context: ./app/services/users
+      dockerfile: Dockerfile
+    env_file:
+      - docker/dev/dev.env
+      - .flaskenv
+    volumes:
+      - './app/services:/app'
+    ports:
+      - '5000:5000'
+    depends_on:
+      - db
+
+  db:
+    container_name: db
+    image: postgres
+    ports:
+      - '5431:5432'

@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
     env_file:
       - docker/dev/dev.env
-      - .flaskenv
+
     volumes:
       - './app/services:/app'
     ports:
@@ -19,3 +19,14 @@ services:
     image: postgres
     ports:
       - '5431:5432'
+
+  nginx:
+    container_name: development_nginx
+    build:
+      context: ./app/services/nginx
+      dockerfile: Dockerfile
+    # volumes:
+    #   - ./nginx:/etc/nginx/
+    command: [nginx-debug, '-g', 'daemon off;']
+    ports:
+      - '80:80'

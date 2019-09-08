@@ -1,5 +1,5 @@
 import pytest
-from users.models import db, User
+from app.services.users.models import db, User
 
 
 def test_user_model(new_user):

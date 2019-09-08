@@ -3,6 +3,7 @@ from models import db
 from config import app_config
 from blueprint import users
 
+
 def create_app(config_name):
     app = Flask(__name__)
     app.debug = True
@@ -13,6 +14,7 @@ def create_app(config_name):
     db.create_all()
     register_blueprints(app)
     return app
+
 
 def register_blueprints(app):
     app.register_blueprint(users)

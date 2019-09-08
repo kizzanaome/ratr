@@ -1,14 +1,17 @@
 import os
 
+
 class BaseConfig(object):
     """parent configuration class"""
     Debug = True
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
 
+
 class DevelopmentConfig(BaseConfig):
     """Configurations for Development."""
     Debug = True
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
+
 
 class TestingConfig(BaseConfig):
     """Configurations for Testing."""

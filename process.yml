@@ -1,0 +1,23 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: ubuntu-1604:201903-01
+    steps:
+      - checkout
+      - run:
+          name: Install python peps in a venv
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install -r app/services/users/requirements.txt
+      - run:
+          name: run tests
+          command: |
+            - . venv/bin/activate
+            - pytest app/services/users/tests
+workflows:
+  version: 2
+  build-and-test:
+    jobs:
+      - build

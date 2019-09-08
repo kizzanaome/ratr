@@ -18,9 +18,11 @@ def create_flask_app(info=None):
 
 # manager.add_command('db', MigrateCommand)
 
+
 @click.group(cls=FlaskGroup, create_app=create_flask_app)
 def cli():
     pass
+
 
 if __name__ == '__main__':
     cli()
